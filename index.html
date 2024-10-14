@@ -11,6 +11,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -23,12 +30,29 @@
       };
     </script>
   </head>
-  <body>
-    <div id="root" class="bg-slate-100">
-      <div
-        class="gallery grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4"
-      ></div>
+  <body class="bg-slate-100">
+    <div id="root">
+      <div class="navbar-wrapper shadow-md">
+        <div class="custom-container mx-auto">
+          <div class="navbar">
+            <div class="navlink"><a href="/">Home</a></div>
+            <div class="navlink"><a href="/wishlist">Wishlist</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-container mx-auto">
+        <div
+          class="gallery grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 py-4"
+        ></div>
+        <div class="singleBook block"></div>
+        <div
+          class="wishlist grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 py-4"
+        ></div>
+      </div>
     </div>
-    <script src="script.js" async></script>
+    <script src="data.js" type="module"></script>
+    <script src="utils.js" type="module"></script>
+    <script src="script.js" type="module" async></script>
   </body>
 </html>

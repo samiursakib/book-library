@@ -1,0 +1,82 @@
+.custom-container {
+  width: 80%;
+}
+
+.navbar-wrapper {
+  height: 60px;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  gap: 30px;
+}
+
+.navlink {
+  color: gray;
+}
+
+.title {
+  line-height: 28px;
+  font-size: small;
+  color: black;
+  text-align: center;
+  font-weight: bolder;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  margin-left: 18px;
+}
+
+.title-wrapper {
+  padding: 0 15px;
+  position: relative;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.love {
+  position: absolute;
+  left: 10px;
+  cursor: pointer;
+}
+
+.genre-badge {
+  /* background: #c383ff;
+  color: #5700a9;
+
+  background: #9ba0ff;
+  color: #1824fa;
+
+  background: #b7ece0;
+  color: #00c69b;
+
+  background: #a4d7b1;
+  color: #008724;
+
+  background: #edfb8d;
+  color: #8ea400;
+
+  background: #edbe76;
+  color: #bc7100;
+
+  background: #e89595;
+  color: #b00000;
+
+  background: #f792de;
+  color: #9c0075;
+
+  background: #cdcdcd;
+  color: #1f1f1f; */
+
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: bolder;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
