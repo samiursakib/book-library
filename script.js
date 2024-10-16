@@ -218,9 +218,8 @@ window.addEventListener("load", async () => {
   const input = document.createElement("input");
   input.type = "text";
   input.className =
-    "border border-red py-1 pl-3 outline-none border-r-0 rounded-bl-md rounded-tl-md";
+    "border border-gray py-1 pl-3 outline-none border-r-0 rounded-bl-md rounded-tl-md";
   input.addEventListener("input", async (event) => {
-    console.log(event.target.value);
     const filteredBookList = bookList.filter((book) =>
       book.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
@@ -242,13 +241,11 @@ window.addEventListener("load", async () => {
     optionElement.innerText =
       option.name.charAt(0).toUpperCase() + option.name.slice(1);
     optionElement.onclick = async (event) => {
-      console.log(event.target.innerText);
       const filteredBookList = bookList.filter((book) =>
         book.subjects.some((value) =>
           value.toLowerCase().includes(event.target.innerText.toLowerCase())
         )
       );
-      console.log(filteredBookList);
       await createGallery(filteredBookList, gallery);
     };
     optionsWrapper.appendChild(optionElement);
@@ -278,7 +275,6 @@ window.addEventListener("load", async () => {
   prev.innerText = "Prev";
   prev.onclick = async () => {
     pageNo--;
-    console.log("prev", pageNo);
     gallery.classList.add("hidden");
     loader.classList.remove("hidden");
     const bookList = await fetchBooksByPage(pageNo);
@@ -290,7 +286,6 @@ window.addEventListener("load", async () => {
   next.innerText = "Next";
   next.onclick = async () => {
     pageNo++;
-    console.log("next", pageNo);
     gallery.classList.add("hidden");
     loader.classList.remove("hidden");
     const bookList = await fetchBooksByPage(pageNo);
@@ -298,7 +293,6 @@ window.addEventListener("load", async () => {
     await createGallery(bookList, gallery);
   };
 
-  console.log(pageNo);
   pagination.append(prev, next);
 
   const navigateTo = async (route) => {

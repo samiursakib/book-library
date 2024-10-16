@@ -32,12 +32,14 @@
   </head>
   <body class="bg-slate-100">
     <div id="root">
-      <div class="navbar-wrapper shadow-md">
+      <div class="navbar-wrapper shadow-md text-center">
         <div class="custom-container mx-auto">
-          <div class="navbar">
+          <div
+            class="navbar flex flex-col gap-4 md:h-[60px] md:flex-row md:items-center my-4 md:my-0"
+          >
             <div class="navlink"><a href="/">Home</a></div>
             <div class="navlink"><a href="/wishlist">Wishlist</a></div>
-            <div class="search mx-auto"></div>
+            <div class="search mx-auto flex"></div>
             <div class="filter relative hover:cursor-pointer" tabindex="0">
               <span>Filter</span>
             </div>
@@ -55,7 +57,7 @@
         ></div>
       </div>
 
-      <div class="loader my-48">
+      <div class="loader my-56">
         <div
           class="mx-auto animate-spin h-10 w-10 border-4 rounded-full border-t-slate-500"
         ></div>

@@ -3,7 +3,6 @@
 }
 
 .navbar-wrapper {
-  height: 60px;
   background: white;
   display: flex;
   align-items: center;
@@ -12,10 +11,6 @@
 .navbar {
   display: flex;
   gap: 30px;
-}
-
-.navlink {
-  color: gray;
 }
 
 .title {

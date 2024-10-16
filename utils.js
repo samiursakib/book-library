@@ -1,6 +1,4 @@
 import constants from "./constants.js";
-import data from "./data.js";
-import { gallery, pagination, singleBook, wishListGallery } from "./script.js";
 
 export const filterOptions = [
   { name: "fiction", textColor: "#5700a9", bgColor: "#c383ff" },
@@ -54,41 +52,10 @@ export const fetchSingleBook = async (id) => {
       );
     }
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (err) {
     console.error(err);
     return null;
-  }
-};
-
-export const divideArray = (array) => {
-  const parts = getPartsBasedOnBreakpoint();
-  const partSize = Math.ceil(array.length / parts);
-  const dividedArray = [];
-  for (let i = 0; i < parts; i++) {
-    dividedArray.push(array.slice(i * partSize, (i + 1) * partSize));
-  }
-  return dividedArray;
-};
-
-export const getPartsBasedOnBreakpoint = () => {
-  const isSmallScreen = window.matchMedia("(max-width: 480px)").matches;
-  const isMediumScreen = window.matchMedia(
-    "(min-width: 481px) and (max-width: 1023px)"
-  ).matches;
-  const isLargeScreen = window.matchMedia("(min-width: 1024px)").matches;
-  //   console.log(
-  //     isSmallScreen ? 1 : 0,
-  //     isMediumScreen ? 1 : 0,
-  //     isLargeScreen ? 1 : 0
-  //   );
-  if (isSmallScreen) {
-    return 1;
-  } else if (isMediumScreen) {
-    return 3;
-  } else if (isLargeScreen) {
-    return 5;
   }
 };
 
