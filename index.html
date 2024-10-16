@@ -37,6 +37,10 @@
           <div class="navbar">
             <div class="navlink"><a href="/">Home</a></div>
             <div class="navlink"><a href="/wishlist">Wishlist</a></div>
+            <div class="search mx-auto"></div>
+            <div class="filter relative hover:cursor-pointer" tabindex="0">
+              <span>Filter</span>
+            </div>
           </div>
         </div>
       </div>
@@ -49,6 +53,16 @@
         <div
           class="wishlist grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 py-4"
         ></div>
+      </div>
+
+      <div class="loader my-48">
+        <div
+          class="mx-auto animate-spin h-10 w-10 border-4 rounded-full border-t-slate-500"
+        ></div>
+      </div>
+
+      <div class="custom-container mx-auto my-10">
+        <div class="pagination flex gap-6 justify-center"></div>
       </div>
     </div>
     <script src="data.js" type="module"></script>

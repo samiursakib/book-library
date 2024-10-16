@@ -1,3 +1,5 @@
+"border px-4 py-1 border-slate-400 rounded hover:bg-slate-200";
+
 const data = {
   count: 74407,
   next: "https://gutendex.com/books/?page=2",

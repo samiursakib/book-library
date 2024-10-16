@@ -1,8 +1,8 @@
 import constants from "./constants.js";
 import data from "./data.js";
-import { gallery, singleBook, wishListGallery } from "./script.js";
+import { gallery, pagination, singleBook, wishListGallery } from "./script.js";
 
-const filterOptions = [
+export const filterOptions = [
   { name: "fiction", textColor: "#5700a9", bgColor: "#c383ff" },
   { name: "literature", textColor: "#1824fa", bgColor: "#9ba0ff" },
   { name: "biography", textColor: "#00c69b", bgColor: "#b7ece0" },
@@ -22,6 +22,20 @@ export const fetchBooks = async () => {
       throw new Error(
         "Network response was not okay during fetching all books"
       );
+    }
+    const result = await response.json();
+    return result.results;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+export const fetchBooksByPage = async (pageNo) => {
+  try {
+    const response = await fetch(constants.fetchBooksByPage + pageNo);
+    if (!response.ok) {
+      throw new Error("Network response was not okay");
     }
     const result = await response.json();
     return result.results;
@@ -76,82 +90,6 @@ export const getPartsBasedOnBreakpoint = () => {
   } else if (isLargeScreen) {
     return 5;
   }
-};
-
-export const showBookDetails = (id) => {
-  const books = data.results;
-  const book = books?.find((book) => book.id === id);
-  if (book) {
-    gallery.classList.add("hidden");
-    wishListGallery.classList.add("hidden");
-    singleBook.classList.remove("hidden");
-    singleBook.innerHTML = "";
-
-    const bookDetailsContainer = document.createElement("div");
-    bookDetailsContainer.className =
-      "flex flex-col md:flex-row gap-4 [&>*]:w-1/2 mt-12 h-[500px]";
-
-    const imageWrapper = document.createElement("div");
-    const image = document.createElement("img");
-    image.src = book.formats["image/jpeg"];
-    image.alt = book.formats["image/jpeg"];
-    image.className = "max-h-[500px] w-full rounded-md";
-
-    imageWrapper.appendChild(image);
-    const details = document.createElement("div");
-    details.className = "flex flex-col gap-4";
-
-    const title = document.createElement("div");
-    title.className = "text-4xl font-extralight";
-    title.innerText = book.title;
-
-    const authors = document.createElement("div");
-    authors.className = "";
-    authors.innerText = "Written by " + book.authors[0]?.name ?? "Unknown";
-
-    const topics = filterOptions.filter((option) =>
-      book.subjects.some((value) => value.includes(option.name))
-    );
-
-    const genre = document.createElement("div");
-    const ul = document.createElement("ul");
-    ul.className = "flex flex-wrap gap-4";
-    for (let topic of topics) {
-      const li = document.createElement("li");
-      li.className = `genre-badge text-[${topic.textColor}] bg-[${topic.bgColor}]`;
-      li.innerText = topic.name.charAt(0).toUpperCase() + topic.name.slice(1);
-      ul.appendChild(li);
-    }
-    genre.appendChild(ul);
-
-    const downloadItem = document.createElement("div");
-    const downloadCount = document.createElement("span");
-    downloadCount.className = "font-bold";
-    downloadCount.innerText = book.download_count;
-    const downloadCountBefore = document.createElement("span");
-    downloadCountBefore.innerText = "Downloaded ";
-    const downloadCountAfter = document.createElement("span");
-    downloadCountAfter.innerText = " times";
-
-    downloadItem.append(downloadCountBefore, downloadCount, downloadCountAfter);
-
-    const backWrapper = document.createElement("div");
-    backWrapper.innerHTML = "<i class='fa-solid fa-arrow-left'></i>";
-    const backButton = document.createElement("button");
-    backButton.style.marginLeft = "10px";
-    backButton.innerText = "Go Back";
-    backButton.onclick = () => window.history.back();
-
-    backWrapper.appendChild(backButton);
-    details.append(title, authors, genre, downloadItem, backWrapper);
-    bookDetailsContainer.append(imageWrapper, details);
-    singleBook.append(bookDetailsContainer);
-  }
-};
-
-export const navigateToBook = (id) => {
-  window.history.pushState({ id }, `Book ${id}`, `/books/${id}`);
-  showBookDetails(id);
 };
 
 export const updateWishList = (id) => {
